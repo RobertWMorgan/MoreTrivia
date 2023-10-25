@@ -5,11 +5,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --primary-color: white;
-  --secondary-color: black;
-}
-
 main {
   width: 100%;
   height: 100vh;
@@ -18,6 +13,17 @@ main {
 #dark-mode-toggle {
   width: 50px;
   height: 50px;
+  background-color: transparent;
+  background-image: url('../public/images/darkmode-icon.png');
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  border: 0px;
+  img {
+    width: 50px;
+    height: 50px;
+    display: cover;
+  }
 }
 
 .lightmode {
@@ -38,28 +44,24 @@ main {
   background-color: black;
 }
 
-body {
-  background-color: var(--primary-color);
-}
-
 .header {
   font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-}
 
-h1 {
-  color: var(--secondary-color);
-  padding-top: 10px;
-  transition: 0.5s;
-}
+    h1 {
+      color: var(--secondary-color);
+      padding-top: 10px;
+      transition: 0.5s;
+    }
 
-.header-right {
-  position: fixed;
-  right: 10px;
-  top: 15px;
+    .header-right {
+      position: fixed;
+      right: 10px;
+      top: 15px;
+    }
 }
 
 .container {
@@ -68,82 +70,88 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
+
+  .difficulty-buttons {
+    display: flex;
+    justify-content: space-evenly;
+
+    #easy:hover {
+      background-color: rgb(144, 238, 144);
+      box-shadow: 0 0 20px rgb(0, 100, 0);
+    }
+    
+    #medium:hover {
+      background-color: rgb(255, 166, 0);
+      box-shadow: 0 0 20px rgb(182, 118, 0);
+    }
+    
+    #hard:hover {
+      background-color: rgb(255, 0, 0);
+      box-shadow: 0 0 20px rgb(139, 0, 0);
+    }
+  }
+
+  .difficulty-buttons button:hover {
+    letter-spacing: 0.2em;
+    transform: scale(1.2);
+  }
+  
+  .difficulty-buttons button {
+    height: 50px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 17px;
+    background: transparent;
+    color: var(--secondary-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    transition: 0.5s;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+  }
+
+  .user-input {
+    padding-top: 50px;
+    
+    input {
+      width: 100%;
+      height: 70px;
+      border: 1px solid var(--secondary-color);
+      border-radius: 5px;
+      text-align: center;
+      font-size: 25px;
+      color: var(--secondary-color);
+      background-color: transparent;
+      transition: 0.5s;
+    }
+  }
 }
 
-.difficulty-buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
+// Not working atm
+// #easy.active {
+//   background-color: rgb(144, 238, 144);
+//   box-shadow: 0 0 20px rgb(0, 100, 0);
+//   letter-spacing: 0.2em;
+//   transform: scale(1.2);
+// }
 
-.difficulty-buttons button {
-  height: 50px;
-  width: 150px;
-  cursor: pointer;
-  font-size: 17px;
-  background: transparent;
-  color: var(--secondary-color);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 400;
-  transition: 0.5s;
-  border: 1px solid var(--secondary-color);
-  border-radius: 5px;
-}
+// #medium.active {
+//   background-color: rgb(255, 166, 0);
+//   box-shadow: 0 0 20px rgb(182, 118, 0);
+//   letter-spacing: 0.2em;
+//   transform: scale(1.2);
+// }
 
-.difficulty-buttons button:hover {
-  letter-spacing: 0.2em;
-  transform: scale(1.2);
-}
+// #hard.active {
+//   background-color: rgb(255, 0, 0);
+//   box-shadow: 0 0 20px rgb(139, 0, 0);
+//   letter-spacing: 0.2em;
+//   transform: scale(1.2);
+// }
 
-#easy:hover {
-  background-color: rgb(144, 238, 144);
-  box-shadow: 0 0 20px rgb(0, 100, 0);
-}
-
-#medium:hover {
-  background-color: rgb(255, 166, 0);
-  box-shadow: 0 0 20px rgb(182, 118, 0);
-}
-
-#hard:hover {
-  background-color: rgb(255, 0, 0);
-  box-shadow: 0 0 20px rgb(139, 0, 0);
-}
-
-#easy.active {
-  background-color: rgb(144, 238, 144);
-  box-shadow: 0 0 20px rgb(0, 100, 0);
-  letter-spacing: 0.2em;
-  transform: scale(1.2);
-}
-
-#medium.active {
-  background-color: rgb(255, 166, 0);
-  box-shadow: 0 0 20px rgb(182, 118, 0);
-  letter-spacing: 0.2em;
-  transform: scale(1.2);
-}
-
-#hard.active {
-  background-color: rgb(255, 0, 0);
-  box-shadow: 0 0 20px rgb(139, 0, 0);
-  letter-spacing: 0.2em;
-  transform: scale(1.2);
-}
-
-.user-input {
-  padding-top: 50px;
-}
-
-input {
-  width: 100%;
-  height: 70px;
-  border: 1px solid var(--secondary-color);
-  border-radius: 5px;
-  text-align: center;
-  font-size: 25px;
-  color: var(--secondary-color);
-  background-color: transparent;
-  transition: 0.5s;
+#test{
+width: 500px;
+height: 500px;
 }

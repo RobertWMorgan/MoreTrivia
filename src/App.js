@@ -1,21 +1,6 @@
 import './App.scss';
 import { useState } from "react";
 
-
-// btnList.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         document.querySelector('.active')?.classList.remove('active');
-//         btn.classList.add('active');
-//     })
-// })
-
-// const darkToggle = document.getElementById("dark-mode-toggle")
-
-// darkToggle.onclick = function() {
-//     document.body.classList.toggle("darkmode")
-// }
-
-
 function App() {
 
   const [isDark, setIsDark] = useState("lightmode");
@@ -33,7 +18,7 @@ function App() {
       <div class="header">
         <h1 class={isDark === "lightmode" ? "lightmode" : "darkmode"}>More Trivia</h1>
         <div class="header-right">
-                <button id="dark-mode-toggle" onClick={darkToggle}><image src="/images/darkmode-icon.png" /></button>
+          <button id="dark-mode-toggle" onClick={darkToggle}></button>
         </div>
       </div>
       <div class="container">
@@ -43,7 +28,7 @@ function App() {
             <button id="hard" class={isDark === "lightmode" ? "lightmode" : "darkmode"}>Hard</button>
         </div>
         <div class="user-input">
-            <input type="text" name="user-input" id="user-input" placeholder="What topic would you like?" class={isDark === "lightmode" ? "lightmode" : "darkmode"}/>
+          <input type="text" name="user-input" id="user-input" placeholder="What topic would you like?" class={isDark === "lightmode" ? "lightmode" : "darkmode"}/>
         </div>
       </div>
     </main>
