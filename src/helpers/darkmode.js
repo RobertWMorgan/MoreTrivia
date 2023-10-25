@@ -1,12 +1,4 @@
 
-// export const darkToggle = () => {
-//     if (isDark === "lightmode") {
-//       setIsDark("darkmode")
-//     } else setIsDark("lightmode")
-//   }
-
-
-
 // If statements to check which mode then reutrning the correct class
 
 export const checkDarkBg = (isDark) => {

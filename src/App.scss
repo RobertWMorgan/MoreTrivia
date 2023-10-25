@@ -1,3 +1,7 @@
+$green: rgb(144, 238, 144);
+$red: rgb(255, 0, 0);
+$orange: rgb(255, 166, 0);
+
 * {
   margin: 0;
   padding: 0;
@@ -76,17 +80,17 @@ main {
     justify-content: space-evenly;
 
     #easy:hover {
-      background-color: rgb(144, 238, 144);
+      background-color: $green;
       box-shadow: 0 0 20px rgb(0, 100, 0);
     }
     
     #medium:hover {
-      background-color: rgb(255, 166, 0);
+      background-color: $orange;
       box-shadow: 0 0 20px rgb(182, 118, 0);
     }
     
     #hard:hover {
-      background-color: rgb(255, 0, 0);
+      background-color: $red;
       box-shadow: 0 0 20px rgb(139, 0, 0);
     }
   }

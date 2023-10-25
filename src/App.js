@@ -1,10 +1,39 @@
 import './App.scss';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { checkDarkBg, checkDark } from "./helpers/darkmode.js"
+import axios from 'axios';
 
 function App() {
+
   // Difficulties for button mapping
   const difficulties = ['easy', 'medium', 'hard']
+
+  // API Stuff WIP with test button  (don't use - only limited number of req)         <button onClick={(e) => testApi(e)}>test button</button>
+
+const apiReq = async (e) => {
+  console.log('button pressed')
+  e.preventDefault()
+  try {
+    const { data } = await axios.post('https://api.openai.com/v1/chat/completions ', 
+    {
+      "model": "gpt-3.5-turbo",
+      "messages": [{"role": "user", "content": "What is the name of the only champion in League of Legends whose abilities all have a passive effect? is Kled the correct answer and if not what is?"}],
+      "temperature": 0.7
+    }, 
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+      },
+    }
+    )
+    console.log({ data })
+  } catch (err) {
+    console.log(err.response.data)
+  }
+}
+
+
+
 
 
   // Darkmode/Lightmode
@@ -26,22 +55,21 @@ any elements that need darkmode/lightmode and we don't have to write the ternary
 */
 
   return (
-    <main class={checkDarkBg(isDark)}>
-      <div class="header">
-        <h1 class={checkDark(isDark)}>More Trivia</h1>
-        <div class="header-right">
+    <main className={checkDarkBg(isDark)}>
+      <div className="header">
+        <h1 className={checkDark(isDark)}>More Trivia</h1>
+        <div className="header-right">
           <button id="dark-mode-toggle" onClick={darkToggle}></button>
         </div>
       </div>
-      <div class="container">
-        <div class="difficulty-buttons">
+      <div className="container">
+        <div className="difficulty-buttons">
             {difficulties.map((diff) => {
-          console.log({ diff })
-          return <button id={diff} class={checkDark(isDark)}>{diff}</button>
+          return <button key={diff} id={diff} className={checkDark(isDark)}>{diff}</button>
         })}
         </div>
-        <div class="user-input">
-          <input type="text" name="user-input" id="user-input" placeholder="What topic would you like?" class={checkDark(isDark)}/>
+        <div className="user-input">
+          <input type="text" name="user-input" id="user-input" placeholder="What topic would you like?" className={checkDark(isDark)}/>
         </div>
       </div>
     </main>
