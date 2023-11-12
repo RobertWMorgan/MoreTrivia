@@ -12,3 +12,4 @@ export const checkDark = (isDark) => {
         return "lightmode"
     } else return "darkmode"
 }
+
