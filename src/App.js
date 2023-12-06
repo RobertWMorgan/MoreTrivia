@@ -48,6 +48,21 @@ const apiReq = async (e) => {
   // State change
   const [qStage, setQStage] = useState(1)
 
+
+  // Topic input state change
+  const [topicInput, setTopicInput] = useState("") 
+ 
+  const chosenTopic = (e) => {
+    setTopicInput(e.target.value)
+    console.log(topicInput)
+  }
+ 
+  const submitChosenTopic = (e) => {
+    e.preventDefault()
+    setQStage(2)
+    console.log("submitted")
+  } 
+
   return (
     <>
       
@@ -58,16 +73,27 @@ const apiReq = async (e) => {
             <button id="dark-mode-toggle" onClick={darkToggle}></button>
           </div>
         </div>
-        <div className="container">
+
+        {qStage === 1 ?
+        <div className="container1">
           <div className="difficulty-buttons">
               {difficulties.map((diff) => {
             return <button key={diff} onClick={() => changeDifficulty(diff)} id={diff} className={checkDark(isDark)}>{diff}</button>
           })}
           </div>
-          <div className="user-input">
-            <input type="text" name="user-input" id="user-input" placeholder="What topic would you like?" className={checkDark(isDark)}/>
-          </div>
+          <form className="user-input" onSubmit={submitChosenTopic}>
+            <input type="text" name="user-input" id="user-input" placeholder="What topic would you like?" onChange={chosenTopic} className={checkDark(isDark)}/> 
+          </form>
         </div>
+        :
+        <div className="container2">
+          <p className="chosenTopic" className={checkDark(isDark)}>Your topic is: {topicInput}</p>
+          <p className="question" className={checkDark(isDark)}>Question</p>
+          <form className="user-answer">
+            <input type="text" name="user-answer" id="user-answer" placeholder="Enter your answer" className={checkDark(isDark)}/>
+          </form>
+        </div>
+          }
     </main>
     </>
     
